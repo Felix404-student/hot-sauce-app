@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<h1 class="display-5">Profile Page</h1>
+<h2>Welcome, {{ user.username }}!</h2>
+
+    <h3>Your Rated Hot Sauces:</h3>
+    <ul>
+        {% for hot_sauce in rated_hotsauces %}
+            <li><a href="{{ url_for('hotsauces.hotsauce_details', hotsauce_id=hot_sauce.id) }}">{{ hot_sauce.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

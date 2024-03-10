@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h2>Hot Sauce Details</h2>
+  <h3>Name: {{ hotsauce.name }}</h3>
+  <img src="{{ '/static/images/' +  image['filename'] }}" width="200" height="200" alt="{{ hotsauce.name }} bottle">
+  <p><strong>Base:</strong> {{ hotsauce.base }}</p>
+  <p><strong>Pepper:</strong> {{ hotsauce.pepper }}</p>
+  <p><strong>Bottle Type:</strong> {{ hotsauce.bottle }}</p>
+</div>
+
+{% endblock %}
+

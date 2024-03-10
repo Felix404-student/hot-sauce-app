@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Check out the Hot Sauces!</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Average Flavor Rating</th>
+      <th>Average Heat Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for hotsauce in hotsauces %}
+      {% set image_name = average_ratings[hotsauce.id]['image_filename'] %}
+      <tr>
+        <td><img src="{{ url_for('static', filename='images/' + image_name) }}" width="60" height="60" alt="{{ hotsauce['name'] }}"></td>
+        <td><a href="{{ url_for('hotsauces.hotsauce_details', hotsauce_id=hotsauce.id) }}">{{ hotsauce.name }}</a></td>
+        <td>{{ average_ratings[hotsauce.id]['flavor'] }} / 10</td>
+        <td>{{ average_ratings[hotsauce.id]['heat'] }} / 10</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p><a class="btn btn-primary" href="{{ url_for('hotsauces.add_hot_sauce') }}">Add a new Hot Sauce</a></p>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="display-4">Hot Sauce App</h1>
+
+{% if 'user_id' not in session %}
+<p class="lead">Register or Login to Access Secrets...</p>
+{% endif %}
+
+{% if 'user_id' in session %}
+<p class="lead">Check out your profile, or log out below:</p>
+{% endif %}
+
+<ul>
+  {% if 'user_id' not in session %}
+    <li><a class="lead" href="/register">Register</a></li>
+    <li><a class="lead" href="/login">Login</a></li>
+  {% endif %}
+
+  {% if 'user_id' in session %}
+    <li><a class="lead" href="/profile">Profile</a></li>
+    <li><a class="lead" href="/logout">Logout</a></li>
+  {% endif %}
+</ul>
+
+{% endblock %}
